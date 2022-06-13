@@ -123,14 +123,20 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-
 # we whitelist localhost:3000 because that's where frontend will be served
-CORS_ORIGIN_WHITELIST = (
-     'localhost:3000/'
- )
 
-CORS_ALLOWED_ORIGINS = [
-    'http://0.0.0.0:3000',
-    'http://127.0.0.1:3000',
-    'http://localhost:3000',
-]
+# Previously CORS_ALLOWED_ORIGINS was called CORS_ORIGIN_WHITELIST, which still works as an alias, with the new name taking precedence.
+# CORS_ORIGIN_WHITELIST = (
+#      'localhost:3000/'
+#  )
+
+cors_allowed_origins = os.getenv('CORS_ALLOWED_ORIGINS')
+cors_allowed_origins = cors_allowed_origins.split(',')
+cors_allowed_origins = [x.strip(" ") for x in cors_allowed_origins]
+CORS_ALLOWED_ORIGINS = cors_allowed_origins
+
+# CORS_ALLOWED_ORIGINS = [
+#     'http://0.0.0.0:3000',
+#     'http://127.0.0.1:3000',
+#     'http://localhost:3000',
+# ]
