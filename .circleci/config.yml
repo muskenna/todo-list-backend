@@ -32,6 +32,8 @@ jobs:
       image: ubuntu-2004:202201-02
     steps:
       - checkout
+      - get-tag
+      - docker-hub-auth
       - run:
           name: Start container and verify it's working
           command: |
