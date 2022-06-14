@@ -45,6 +45,7 @@ jobs:
             echo $BRANCH_TAG
             #docker build -t $CIRCLE_PROJECT_REPONAME:$BRANCH_TAG .
             cat ~/.docker/config.json
+            docker image ls
             docker-compose -f docker-compose.yml up -d --build --force-recreate
             docker tag $CIRCLE_PROJECT_REPONAME:$BRANCH_TAG $AWS_ECR_ACCOUNT_URL/$CIRCLE_PROJECT_REPONAME:$BRANCH_TAG
             docker tag $CIRCLE_PROJECT_REPONAME:$BRANCH_TAG $AWS_ECR_ACCOUNT_URL/$CIRCLE_PROJECT_REPONAME:$CIRCLE_SHA1
