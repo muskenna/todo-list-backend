@@ -14,7 +14,7 @@ WORKDIR $DockerHOME
 # install dependencies
 RUN apk add build-base
 RUN pip install --upgrade pip 
-COPY ./requirements.txt $DockerHOME
+COPY ./requirements $DockerHOME
 RUN pip install -r requirements.txt
 
 # copy project

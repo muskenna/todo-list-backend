@@ -1,0 +1,14 @@
+version: '3'
+services:
+  todo-list-backend:
+    image: "${AWS_ECR_ACCOUNT_URL}/demo:${BRANCH_TAG}"
+    container_name: todo-list-backend
+    expose:
+      - 80
+    restart: always
+    environment:
+      - DEPLOYMENT={BRANCH_TAG}
+      - GIT_SHA={SHA}
+
+volumes:
+  static_content:
