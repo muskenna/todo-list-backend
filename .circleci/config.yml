@@ -8,7 +8,11 @@ commands:
       - run:
           name: 'Get tag from branch'
           command: |
-            if [[ "${CIRCLE_BRANCH}" == "master"  ||  "${CIRCLE_BRANCH}" == "staging" ]]; then
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              echo 'export BRANCH_TAG="master"' >> $BASH_ENV
+              echo 'export BRANCH_TAG="master"' >> ~/.bashrc
+              x='prod'
+            elif [[ "${CIRCLE_BRANCH}" == "staging" ]]; then
               echo 'export BRANCH_TAG="staging"' >> $BASH_ENV
               echo 'export BRANCH_TAG="staging"' >> ~/.bashrc
               x='staging'
