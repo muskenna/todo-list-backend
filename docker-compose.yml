@@ -1,7 +1,7 @@
 version: '3'
 services:
   todo-list-backend:
-    image: "${AWS_ECR_ACCOUNT_URL}/demo:${BRANCH_TAG}"
+    image: ${AWS_ECR_ACCOUNT_URL}/${$CIRCLE_PROJECT_REPONAME}:${BRANCH_TAG}
     container_name: todo-list-backend
     expose:
       - 80
