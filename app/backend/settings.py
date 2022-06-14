@@ -130,13 +130,9 @@ STATIC_URL = '/static/'
 #      'localhost:3000/'
 #  )
 
-cors_allowed_origins = os.getenv('CORS_ALLOWED_ORIGINS', 'http://localhost:3000')
+cors_allowed_origins = os.getenv('CORS_ALLOWED_ORIGINS', 'http://localhost:80')
 cors_allowed_origins = cors_allowed_origins.split(',')
 cors_allowed_origins = [x.strip(" ") for x in cors_allowed_origins]
 CORS_ALLOWED_ORIGINS = cors_allowed_origins
 
-# CORS_ALLOWED_ORIGINS = [
-#     'http://0.0.0.0:3000',
-#     'http://127.0.0.1:3000',
-#     'http://localhost:3000',
-# ]
+CORS_ORIGIN_ALLOW_ALL = True
